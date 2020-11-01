@@ -14,17 +14,11 @@ $(document)
             "columns": [
                          { "data": "code"},
                          { "data": "day" },
-                         { "data": "hearing" },
-                         { "data": "lat" },
-                         { "data": "lng" },
-                         { "data": "postcode" },
                          { "data": "time" },
-                         { "data": "duration" },
                          { "data": "title" },
-                         { "data": "wheelchair" },
                          { "data": "covid_open_status" },
-                         { "data": "detail" },
-                         { "data": "conference_url" }
+                         { "data": "conference_url" },
+                         { "data": "postcode" }
                        ],
 			} );
 });
