@@ -56,7 +56,7 @@ class AlcoholicsAnonymousSpider(scrapy.Spider):
             meeting_time = datetime.time(hour,minute)
             
             meeting_data = {'code':marker_code,'day':marker_day,'hearing':marker_hearing,'lat':marker_lat,'lng':marker_lng,'postcode':marker_postcode,'time':meeting_time,\
-               'duration':'','title':marker_title,'wheelchair':marker_wheelchair,'intergroup': intergroups[response.meta['intergroup_id']],'covid_open_status':covid_open_status}
+               'duration':'','title':marker_title,'wheelchair':marker_wheelchair,'intergroup': intergroups[response.meta['intergroup_id']],'open_again':covid_open_status}
           
 
             url = f'https://www.alcoholics-anonymous.org.uk/detail.do?id={marker_code}'

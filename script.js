@@ -16,7 +16,7 @@ $(document)
                          { "data": "day" },
                          { "data": "time" },
                          { "data": "title" },
-                         { "data": "covid_open_status" },
+                         { "data": "open_again" },
                          { "data": "conference_url" },
                          { "data": "postcode" }
                        ],
