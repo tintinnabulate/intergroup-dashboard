@@ -1,15 +1,16 @@
+# -*- coding: utf-8 -*-
 import scrapy
 import os
 import pandas as pd
 from bs4 import BeautifulSoup
 import re
 import csv
-from scraper.items import MeetingItem
+#from scraper.items import ScraperItem # Model
 from scrapy import Spider
 from scrapy.http import FormRequest,Request
 from scrapy.utils.response import open_in_browser
 import datetime
-from meetings.models import Meeting
+
 
 zoom_pattern = r"https://[\w+?\.]*zoom\.us/j/.+?[\?pwd=\w+?]+\b"
 ZOOM_RE = re.compile(zoom_pattern, re.IGNORECASE | re.MULTILINE)
@@ -19,18 +20,18 @@ intergroups = {117:"City Of London",36:"East London",123:"Chelsea",124:"Chelsea 
     63:"London North West",62:"London South Middlesex",119:"London West End",120:"London Westway",75:"London Croydon Epsom & Sutton",55:"London North Kent",
     122:"London South East (East)",121:"London South East (West)",77:"London South",42:"London South West"} 
 
-class AASpider(scrapy.Spider):
-    name = 'aameetings'
+
+class AlcoholicsAnonymousSpider(scrapy.Spider):
+    name = 'alcoholics-anonymous'
     intergroup_urls = {x[0]:f'https://www.alcoholics-anonymous.org.uk/markers.do?ig={x[0]}'  for x  in intergroups.items()}
-    member_ids = []
-    
+    #allowed_domains = ['https://www.alcoholics-anonymous.org.uk/markers.do?ig=11']
+    #start_urls = ['http://https://www.alcoholics-anonymous.org.uk/markers.do?ig=11/']
 
     def start_requests(self):
         for intergroup_id,url in self.intergroup_urls.items():
             yield Request(url,callback=self.parse,meta={'intergroup_id':intergroup_id})
-   
-    def parse(self, response):
 
+    def parse(self, response):
         soup = BeautifulSoup(response.text, 'html.parser') 
         meetings=soup.find_all('marker')
         for meeting in meetings:
@@ -95,6 +96,5 @@ class AASpider(scrapy.Spider):
         if matches:
             meeting_data['conference_url'] = matches[0]
 
-        item = MeetingItem(meeting_data)
-        print('yuyuyu')
+        item = meeting_data
         yield item
