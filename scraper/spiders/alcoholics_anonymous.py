@@ -16,16 +16,11 @@ zoom_pattern = r"https://[\w+?\.]*zoom\.us/j/.+?[\?pwd=\w+?]+\b"
 ZOOM_RE = re.compile(zoom_pattern, re.IGNORECASE | re.MULTILINE)
 
 
-intergroups = {117:"City Of London",36:"East London",123:"Chelsea",124:"Chelsea & Fulham",118:"London North East",51:"London North",64:"London North Middlesex",
-    63:"London North West",62:"London South Middlesex",119:"London West End",120:"London Westway",75:"London Croydon Epsom & Sutton",55:"London North Kent",
-    122:"London South East (East)",121:"London South East (West)",77:"London South",42:"London South West"} 
-
+intergroups = {11: "Wiltshire",}
 
 class AlcoholicsAnonymousSpider(scrapy.Spider):
     name = 'alcoholics-anonymous'
     intergroup_urls = {x[0]:f'https://www.alcoholics-anonymous.org.uk/markers.do?ig={x[0]}'  for x  in intergroups.items()}
-    #allowed_domains = ['https://www.alcoholics-anonymous.org.uk/markers.do?ig=11']
-    #start_urls = ['http://https://www.alcoholics-anonymous.org.uk/markers.do?ig=11/']
 
     def start_requests(self):
         for intergroup_id,url in self.intergroup_urls.items():
