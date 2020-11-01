@@ -20,5 +20,7 @@ $(document)
                          { "data": "conference_url" },
                          { "data": "postcode" }
                        ],
+            "order": [[ 4, "desc" ]], // sort by open_again
+            "pageLength": 100
 			} );
 });
