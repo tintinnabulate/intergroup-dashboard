@@ -17,8 +17,7 @@ $(document)
                          { "data": "time" },
                          { "data": "title" },
                          { "data": "open_again" },
-                         { "data": "conference_url" },
-                         { "data": "postcode" }
+                         { "data": "conference_url" }
                        ],
             "order": [[ 4, "desc" ]], // sort by open_again
             "pageLength": 100
