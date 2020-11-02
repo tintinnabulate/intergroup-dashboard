@@ -2,7 +2,7 @@ $(document)
     .ready(function() {
 		$('#example').dataTable( {
         	"ajax": {
-            "url": 'https://raw.githubusercontent.com/tintinnabulate/intergroup-dashboard/master/output.json',
+            "url": 'output.json',
             "type": "GET",
             "cache": true,
             "complete":
